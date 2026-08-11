@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica Veterinaria - Menú Principal</title>
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+    <div class="container py-5">
+        <!-- Encabezado -->
+        <div class="text-center mb-5">
+            <h1 class="display-5 fw-bold text-primary">🐾 Sistema Integral - Clínica Veterinaria</h1>
+            <p class="lead text-muted">Selecciona tu rol para ingresar al sistema</p>
+        </div>
+
+        <!-- Tarjetas de Roles -->
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            
+            <!-- Rol: Recepcionista -->
+            <div class="col">
+                <div class="card h-100 shadow-sm border-primary">
+                    <div class="card-body text-center d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="fs-1 mb-3">👩‍💻</div>
+                            <h3 class="card-title text-primary">Recepcionista</h3>
+                            <p class="card-text text-muted">Registro de dueños, mascotas, programación de consultas y facturación con folios.</p>
+                        </div>
+                        <a href="/recepcion" class="btn btn-outline-primary mt-3">Ingresar como Recepcionista</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rol: Veterinario -->
+            <div class="col">
+                <div class="card h-100 shadow-sm border-success">
+                    <div class="card-body text-center d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="fs-1 mb-3">🩺</div>
+                            <h3 class="card-title text-success">Veterinario</h3>
+                            <p class="card-text text-muted">Consulta de pacientes asignados y generación de diagnósticos y tratamientos cifrados.</p>
+                        </div>
+                        <a href="/veterinario" class="btn btn-outline-success mt-3">Ingresar como Veterinario</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rol: Administrador -->
+            <div class="col">
+                <div class="card h-100 shadow-sm border-dark">
+                    <div class="card-body text-center d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="fs-1 mb-3">📊</div>
+                            <h3 class="card-title text-dark">Administrador</h3>
+                            <p class="card-text text-muted">Reportes analíticos avanzados (PIVOT, RANKING), auditorías de tablas y log de errores.</p>
+                        </div>
+                        <a href="/administrador" class="btn btn-outline-dark mt-3">Ingresar como Administrador</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

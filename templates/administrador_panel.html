@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel de Administrador</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container py-5">
+        <h1 class="text-danger mb-4">📊 Panel de Administración y Reportes</h1>
+        <p class="lead">Indicadores gerenciales y análisis del sistema:</p>
+
+        <!-- Sección 1: Clasificación de Clientes (Lealtad) -->
+        <div class="card shadow-sm mb-5">
+            <div class="card-header bg-dark text-white">
+                <h5 class="mb-0">🏆 Clasificación de Lealtad de Dueños (Clientes VIP / Frecuentes)</h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped align-middle">
+                    <thead>
+                        <tr>
+                            <th>Dueño</th>
+                            <th>Total de Consultas</th>
+                            <th>Clasificación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for cliente in clientes %}
+                        <tr>
+                            <td>{{ cliente[0] }}</td>
+                            <td>{{ cliente[1] }}</td>
+                            <td>
+                                <span class="badge {% if cliente[2] == 'Cliente VIP' %}bg-success{% elif cliente[2] == 'Cliente Frecuente' %}bg-primary{% else %}bg-secondary{% endif %}">
+                                    {{ cliente[2] }}
+                                </span>
+                            </td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="3" class="text-center text-muted">No hay registros de clientes aún.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-<!-- Sección 2: Ranking de Productividad de Veterinarios -->
+<div class="card shadow-sm mb-5">
+    <div class="card-header bg-secondary text-white">
+        <h5 class="mb-0">🩺 Ranking de Productividad de Veterinarios</h5>
+    </div>
+    <div class="card-body">
+        <table class="table table-hover align-middle">
+            <thead>
+                <tr>
+                    <th>Ranking</th>
+                    <th>Veterinario</th>
+                    <th>Especialidad</th>
+                    <th>Consultas Atendidas</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for vet in veterinarios %}
+                <tr>
+                    <td><strong>#{{ vet[4] }}</strong></td>
+                    <td>
+                        <!-- Enlace para ver los detalles y consultas del veterinario -->
+                        <a href="/detalles/veterinario/{{ vet[0] }}" class="text-decoration-none fw-bold text-primary">
+                            {{ vet[1] }}
+                        </a>
+                    </td>
+                    <td>{{ vet[2] }}</td>
+                    <td>{{ vet[3] }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="4" class="text-center text-muted">No hay datos de veterinarios o consultas registradas.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+ <h2 class="text-danger mb-4">Registros Dueños</h2>
+<table class="table">
+    {% for d in lista_duenos %}
+    <tr>
+        <td>
+            <!-- En lugar de solo el texto, ponemos un enlace -->
+            <a href="/detalles/dueno/{{ d[0] }}" class="text-decoration-none fw-bold">
+                {{ d[1] }}
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<!-- Ejemplo para mascotas -->
+ <h2 class="text-danger mb-4">Registros Mascotas</h2>
+<table class="table">
+    {% for d in lista_mascotas %}
+    <tr>
+        <td>
+            <!-- En lugar de solo el texto, ponemos un enlace -->
+            <a href="/detalles/mascota/{{ d[0] }}" class="text-decoration-none fw-bold">
+                {{ d[1] }}
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<!-- Botón de Cerrar Sesión para el Administrador -->
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="fw-bold text-dark">Panel Administrativo</h1>
+    <a href="/logout" class="btn btn-outline-danger px-3 py-2 rounded-pill fw-semibold shadow-sm">
+        <i class="fa-solid fa-right-from-bracket me-2"></i> Cerrar Sesión
+    </a>
+</div>
+</html>

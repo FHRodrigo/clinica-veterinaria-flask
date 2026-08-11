@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Dueño - Clínica Veterinaria</title>
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h4 class="mb-0">👩‍💻 Recepción: Registrar Nuevo Dueño</h4>
+                    </div>
+                    <div class="card-body">
+                        
+                        <!-- Mensaje de alerta si Flask envía un aviso -->
+                        {% if mensaje %}
+                            <div class="alert alert-info" role="alert">
+                                {{ mensaje }}
+                            </div>
+                        {% endif %}
+
+                        <form action="/recepcion/dueno" method="POST">
+                            <div class="mb-3">
+                                <label for="nombre" class="form-label">Nombre Completo</label>
+                                <input type="text" class="form-control" id="nombre" name="nombre" >
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Correo Electrónico (Único)</label>
+                                <input type="email" class="form-control" id="email" name="email" >
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="telefono" class="form-label">Teléfono</label>
+                                    <input type="text" class="form-control" id="telefono" name="telefono">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="tipo_doc" class="form-label">Tipo de Documento</label>
+                                    <select class="form-select" id="tipo_doc" name="tipo_doc">
+                                        <option value="INE">INE</option>
+                                        <option value="Pasaporte">Pasaporte</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="num_doc" class="form-label">Número de Documento (Se cifrará en la BD)</label>
+                                <input type="text" class="form-control" id="num_doc" name="num_doc">
+                                <div class="form-text">Este dato se protegerá automáticamente con AES_256.</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="direccion" class="form-label">Dirección</label>
+                                <textarea class="form-control" id="direccion" name="direccion" rows="2"></textarea>
+                            </div>
+
+                            <div class="d-flex justify-content-between">
+                                  <a href="/recepcion" class="btn btn-secondary">Regresar</a>
+                                <button type="submit" class="btn btn-primary">Guardar Dueño</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
